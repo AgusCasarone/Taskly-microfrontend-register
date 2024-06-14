@@ -1,0 +1,45 @@
+<div class="bg-taskly-vermilion-dark/50 rounded-xl h-full p-3
+  flex justify-center h-full flex-col justify-center sm:gap-6 gap-3">
+
+  <h1 class="text-800 text-taskly-woodsmoke-light">Registrate:</h1>
+
+  <form action="registry" class="flex flex-col gap-3 mt-8">
+    <input type="text"
+      [(ngModel)]="newUser.name"
+      name="name"
+      id="name"
+      placeholder="{{ placeHolder.name }}">
+
+    <input type="number"
+      [(ngModel)]="newUser.age"
+      name="age"
+      id="age"
+      placeholder="{{ placeHolder.age }}"
+      min="1"
+      max="110">
+
+    <input type="email"
+      [(ngModel)]="newUser.email"
+      name="email"
+      id="email"
+      placeholder="{{ placeHolder.email }}">
+
+    <input type="password"
+      [(ngModel)]="newUser.password"
+      name="password"
+      id="password"
+      placeholder="{{ placeHolder.password }}">
+
+    <input type="password"
+      [(ngModel)]="confirmPassword"
+      name="confirmPassword"
+      id="confirmPassword"
+      placeholder="{{ placeHolder.confirmPassword }}">
+
+    <input type="submit"
+      name="submit"
+      value="{{ placeHolder.submit }}"
+      id="registry">
+  </form>
+
+</div>

@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.title-100 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.title-200 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.title-300 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.title-400 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.title-500 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.title-600 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.title-700 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.title-800 {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.text-100 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.text-200 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.text-300 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.text-400 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.text-500 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.text-600 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.text-700 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.text-800 {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.btn-primary{
+
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    border: 0;
+    padding: 7px 16px;
+    min-height: 36px;
+    min-width: 36px;
+    color: #f7f7f8;
+    background: #cc3502;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset;
+    ::hover {
+        background: #82250c;
+    }
+
+}
+
+.btn-outline{
+
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #b5b6c4;
+    padding: 7px 16px;
+    min-height: 36px;
+    min-width: 36px;
+    color: #595a70;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+    /* :hover {
+        background: #f6f6f7;
+        outline: 1px solid transparent;
+    } */
+
+}
+
+.card{
+/* b radios, bg, border color, hopver, padding,   */
+}
+
+input[type="submit"], button {
+  @apply bg-[var(--primary-color)] mt-3 py-1 px-2 rounded-sm w-full text-center text-[var(--primary-text-color)] hover:bg-[var(--secondary-color)] hover:cursor-pointer transition delay-75 border-2 border-[var(--primary-color)];
+}
+
+input[type="text"] {
+  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
+}
+
+input[type="email"] {
+  @apply rounded p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
+}
+
+input[type="password"] {
+  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
+}
+
+input[type="number"] {
+  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
+}
+
+label {
+  @apply text-sm;
+}
+
+
+@layer base {
+    body {@apply bg-[#0E0E11] text-white};
+    h1 {@apply text-3xl};
+    h2 {@apply text-2xl};
+    h3,h4 {@apply text-xl};
+    h1, h2, h3, h4 { @apply title-600};
+    h5, h6, p, span {@apply text-500};
+}
