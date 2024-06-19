@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
+import { User } from '../../../interfaces/user';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'register-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss'
 })
@@ -14,10 +16,11 @@ export class RegisterFormComponent {
   constructor(private usersService: UsersService) {}
 
   confirmPassword: string = '';
+  isMissMatchingPassrowds: boolean = false;
 
-  newUser = {
+  newUser: User = {
     name: '',
-    age: null,
+    age: NaN,
     email: '',
     password: ''
   };
@@ -31,9 +34,15 @@ export class RegisterFormComponent {
     submit: 'Registrarme!'
   };
 
-  // TODO create user
-  // register() {
-  //   this.usersService.register(this.newUser);
-  // }
+
+  missMatchingPassrowds(controlPassword: Event) {
+    if (this.newUser.password !== (controlPassword.target as HTMLInputElement).value) {
+      this.isMissMatchingPassrowds = true;
+    }
+  }
+
+  register() {
+    this.usersService.register(this.newUser);
+  }
 
 }

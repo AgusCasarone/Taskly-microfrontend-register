@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'welcome-page',
@@ -7,12 +8,21 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './welcome-page.component.html',
   styleUrl: './welcome-page.component.scss'
 })
-export class WelcomePageComponent {
-  isSmallScreen: boolean = window.innerWidth < 768;
+export class WelcomePageComponent implements OnInit {
+  isSmallScreen: boolean = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.isSmallScreen = window.innerWidth < 768;
+    }
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
-    this.isSmallScreen = window.innerWidth < 768;
+    if (isPlatformBrowser(this.platformId)) {
+      this.isSmallScreen = window.innerWidth < 768;
+    }
   }
-
 }

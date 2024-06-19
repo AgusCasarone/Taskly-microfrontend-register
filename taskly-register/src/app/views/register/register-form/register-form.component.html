@@ -1,15 +1,21 @@
-<div class="bg-taskly-vermilion-dark/50 rounded-xl h-full p-3
-  flex justify-center h-full flex-col justify-center sm:gap-6 gap-3">
+<h1>Registrate:</h1>
 
-  <h1 class="text-800 text-taskly-woodsmoke-light">Registrate:</h1>
-
-  <form action="registry" class="flex flex-col gap-3 mt-8">
+<form class="form-container max-w-full">
+  <div  class="form-group">
+    <label for="name">
+      {{ placeHolder.name }}
+    </label>
     <input type="text"
       [(ngModel)]="newUser.name"
       name="name"
       id="name"
       placeholder="{{ placeHolder.name }}">
+  </div>
 
+  <div  class="form-group">
+    <label for="age">
+      {{ placeHolder.age }}
+    </label>
     <input type="number"
       [(ngModel)]="newUser.age"
       name="age"
@@ -17,29 +23,65 @@
       placeholder="{{ placeHolder.age }}"
       min="1"
       max="110">
+  </div>
 
+  <div  class="form-group">
+    <label for="email">
+      {{ placeHolder.email }}
+    </label>
     <input type="email"
       [(ngModel)]="newUser.email"
       name="email"
       id="email"
       placeholder="{{ placeHolder.email }}">
+  </div>
 
+  <div  class="form-group">
+    <label for="password">
+      {{ placeHolder.password }}
+    </label>
     <input type="password"
       [(ngModel)]="newUser.password"
       name="password"
       id="password"
       placeholder="{{ placeHolder.password }}">
+  </div>
 
+  <div  class="form-group">
+    <label for="confirmPassword">
+      {{ placeHolder.confirmPassword }}
+    </label>
     <input type="password"
+      (change) = 'missMatchingPassrowds($event)'
       [(ngModel)]="confirmPassword"
       name="confirmPassword"
       id="confirmPassword"
       placeholder="{{ placeHolder.confirmPassword }}">
 
-    <input type="submit"
-      name="submit"
-      value="{{ placeHolder.submit }}"
-      id="registry">
-  </form>
+    @if (isMissMatchingPassrowds) {
+      <small class="text-red-500">
+        Las contraseñas no coinciden
+      </small>
+    }
+  </div>
 
-</div>
+  <div class="form-group">
+    <input type="submit"
+    (click)="register()"
+    name="submit"
+    value="{{ placeHolder.submit }}"
+    id="registry"
+    class="btn-outline" >
+  </div>
+
+  <div class="mt-4 text-center">
+
+    <p class="mt-4">Para iniciar sesión
+      <a class="cursor-pointer text-taskly-vermilion-500 hover:text-taskly-vermilion-800"
+      routerLink="/login">
+      hacé click acá</a>.
+    </p>
+  </div>
+</form>
+
+

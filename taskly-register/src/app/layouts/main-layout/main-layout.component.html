@@ -1,4 +1,13 @@
-<div class="w-11/12 md:w-9/12 h-screen mx-auto bg-taskly-background flex flex-col md:flex-row py-4">
+<div class="w-11/12 md:w-9/12 h-screen mx-auto
+bg-taskly-background flex flex-col md:flex-row py-4">
   <welcome-page class="w-full md:w-1/2 h-[10vh] md:h-full min-h-[100px]"/>
-  <register-form class="w-full md:w-1/2 h-full"/>
+
+  <div class="w-full md:w-1/2 h-full">
+    <div class="bg-taskly-woodsmoke-dark/25 rounded-xl h-full p-3
+    flex  w-full flex-col items-center justify-center sm:gap-6 gap-3">
+
+    <router-outlet/>
+
+    </div>
+  </div>
 </div>
