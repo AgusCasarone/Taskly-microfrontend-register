@@ -1,45 +1,81 @@
-<div class="bg-taskly-vermilion-dark/50 rounded-xl h-full p-3
-  flex justify-center h-full flex-col justify-center sm:gap-6 gap-3">
+<div class="bg-taskly-woodsmoke-dark/25 rounded-xl h-full p-3
+  flex  h-full flex-col  sm:gap-6 gap-3">
 
-  <h1 class="text-800 text-taskly-woodsmoke-light">Registrate:</h1>
+  <h1>Registrate:</h1>
 
-  <form action="registry" class="flex flex-col gap-3 mt-8">
-    <input type="text"
-      [(ngModel)]="newUser.name"
-      name="name"
-      id="name"
-      placeholder="{{ placeHolder.name }}">
+  <form class="form-container max-w-full">
+    <div  class="form-group">
+      <label for="name">
+        {{ placeHolder.name }}
+      </label>
+      <input type="text"
+        [(ngModel)]="newUser.name"
+        name="name"
+        id="name"
+        placeholder="{{ placeHolder.name }}">
+    </div>
 
-    <input type="number"
-      [(ngModel)]="newUser.age"
-      name="age"
-      id="age"
-      placeholder="{{ placeHolder.age }}"
-      min="1"
-      max="110">
+    <div  class="form-group">
+      <label for="age">
+        {{ placeHolder.age }}
+      </label>
+      <input type="number"
+        [(ngModel)]="newUser.age"
+        name="age"
+        id="age"
+        placeholder="{{ placeHolder.age }}"
+        min="1"
+        max="110">
+    </div>
 
-    <input type="email"
-      [(ngModel)]="newUser.email"
-      name="email"
-      id="email"
-      placeholder="{{ placeHolder.email }}">
+    <div  class="form-group">
+      <label for="email">
+        {{ placeHolder.email }}
+      </label>
+      <input type="email"
+        [(ngModel)]="newUser.email"
+        name="email"
+        id="email"
+        placeholder="{{ placeHolder.email }}">
+    </div>
 
-    <input type="password"
-      [(ngModel)]="newUser.password"
-      name="password"
-      id="password"
-      placeholder="{{ placeHolder.password }}">
+    <div  class="form-group">
+      <label for="password">
+        {{ placeHolder.password }}
+      </label>
+      <input type="password"
+        [(ngModel)]="newUser.password"
+        name="password"
+        id="password"
+        placeholder="{{ placeHolder.password }}">
+    </div>
 
-    <input type="password"
-      [(ngModel)]="confirmPassword"
-      name="confirmPassword"
-      id="confirmPassword"
-      placeholder="{{ placeHolder.confirmPassword }}">
+    <div  class="form-group">
+      <label for="confirmPassword">
+        {{ placeHolder.confirmPassword }}
+      </label>
+      <input type="password"
+        (change) = 'missMatchingPassrowds($event)'
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="{{ placeHolder.confirmPassword }}">
 
-    <input type="submit"
+      @if (isMissMatchingPassrowds) {
+        <small class="text-red-500">
+          Las contraseñas no coinciden
+        </small>
+      }
+    </div>
+
+    <div class="form-group">
+      <input type="submit"
+      (click)="register()"
       name="submit"
       value="{{ placeHolder.submit }}"
-      id="registry">
+      id="registry"
+      class="btn-outline" >
+    </div>
   </form>
 
 </div>

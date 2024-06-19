@@ -115,84 +115,36 @@
     font-style: normal;
 }
 
-.btn-primary{
+@layer base {
+    body {@apply bg-taskly-background text-taskly-white};
+    h1 {@apply text-2xl title-600 mb-1};
+    h2 {@apply text-xl title-600 mb-1};
+    h3 {@apply text-lg title-600 mb-1};
+    h4 {@apply text-lg title-500 mb-1};
+    h5 {@apply text-base title-500 mb-1 leading-4   };
+    h6, p, span {@apply text-400 text-sm mb-1};
+}
 
-    display: inline-block;
-    outline: 0;
-    cursor: pointer;
-    text-align: center;
-    border: 0;
-    padding: 7px 16px;
-    min-height: 36px;
-    min-width: 36px;
-    color: #f7f7f8;
-    background: #cc3502;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px, rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset;
-    ::hover {
-        background: #82250c;
+@layer components {
+    .card-container { @apply rounded-[1rem] p-4 hover:border-taskly-vermilion-100 hover:border-opacity-40  border border-transparent w-64 h-fit transition ease-linear};
+    .card-task {@apply bg-taskly-woodsmoke-900 p-2 rounded w-full min-h-9}
+    .card-container h3{ @apply text-taskly-vermilion-600}
+    .card-task h5{ @apply underline decoration-taskly-vermilion-600}
+
+    button, input[type="submit"] {@apply inline-block text-center px-6 rounded-lg cursor-pointer w-full min-h-9 min-w-9 text-center disabled:cursor-not-allowed}
+    .btn-outline {@apply border border-solid border-taskly-vermilion-600 text-taskly-vermilion-600 hover:border-taskly-vermilion-700 hover:text-taskly-vermilion-700 transition ease-linear active:border-taskly-vermilion-800 active:text-taskly-vermilion-800
+    disabled:border-taskly-vermilion-900 disabled:text-taskly-vermilion-900}
+    .btn-flat {@apply border bg-taskly-vermilion-500  hover:bg-taskly-vermilion-600 transition ease-linear active:bg-taskly-vermilion-700
+    disabled:bg-taskly-vermilion-950 disabled:text-taskly-vermilion-700}
+
+    .form-container {@apply flex flex-col w-full max-w-80 gap-3}
+    .form-group {@apply flex flex-col w-full gap-1 }
+    label{
+        @apply text-sm text-taskly-vermilion-600 ;
+      }
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"]  {
+      @apply bg-taskly-woodsmoke-700 rounded-sm p-1 text-white focus-visible:border focus-visible:border-taskly-vermilion-600  focus:border focus:border-taskly-vermilion-600  focus:bg-taskly-woodsmoke-500  disabled:bg-taskly-woodsmoke-900 disabled:text-taskly-woodsmoke-400 disabled:cursor-not-allowed   ;
     }
 
-}
 
-.btn-outline{
-
-    display: inline-block;
-    outline: 0;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid #b5b6c4;
-    padding: 7px 16px;
-    min-height: 36px;
-    min-width: 36px;
-    color: #595a70;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
-    /* :hover {
-        background: #f6f6f7;
-        outline: 1px solid transparent;
-    } */
-
-}
-
-.card{
-/* b radios, bg, border color, hopver, padding,   */
-}
-
-input[type="submit"], button {
-  @apply bg-[var(--primary-color)] mt-3 py-1 px-2 rounded-sm w-full text-center text-[var(--primary-text-color)] hover:bg-[var(--secondary-color)] hover:cursor-pointer transition delay-75 border-2 border-[var(--primary-color)];
-}
-
-input[type="text"] {
-  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
-}
-
-input[type="email"] {
-  @apply rounded p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
-}
-
-input[type="password"] {
-  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
-}
-
-input[type="number"] {
-  @apply rounded-sm p-1 bg-taskly-woodsmoke-200 focus:border-2 border-taskly-woodsmoke text-neutral-900;
-}
-
-label {
-  @apply text-sm;
-}
-
-
-@layer base {
-    body {@apply bg-[#0E0E11] text-white};
-    h1 {@apply text-3xl};
-    h2 {@apply text-2xl};
-    h3,h4 {@apply text-xl};
-    h1, h2, h3, h4 { @apply title-600};
-    h5, h6, p, span {@apply text-500};
 }
