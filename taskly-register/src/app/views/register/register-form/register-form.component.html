@@ -107,13 +107,13 @@
         {{ fillAllFields }}
       </small>
     }
-    @else if (responseMessage) {
-      <small class="error">
+    @else if (responseMessage && registerSuccessful) {
+      <small class="success">
         {{ responseMessage }}
       </small>
     }
     @else {
-      <small class="success">
+      <small class="error">
         {{ responseMessage }}
       </small>
     }

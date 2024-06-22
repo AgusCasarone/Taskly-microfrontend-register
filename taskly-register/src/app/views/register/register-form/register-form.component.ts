@@ -22,6 +22,7 @@ export class RegisterFormComponent {
   fillAllFields: string = '';
 
   responseMessage: string = '';
+  registerSuccessful: boolean = false;
 
   newUser: User = {
     name: '',
@@ -75,7 +76,9 @@ export class RegisterFormComponent {
 
     if (response.includes('Usuario registrado:')) {
       this.responseMessage = '¡Te registraste con éxito!';
+      this.registerSuccessful = true;
       this.resetForm();
+      this.resetStatusAfterDelay();
     } else {
       this.responseMessage = response;
     }
@@ -89,6 +92,13 @@ export class RegisterFormComponent {
       password: ''
     }
     this.confirmPassword = '';
+  }
+
+  resetStatusAfterDelay() {
+    setTimeout(() => {
+      this.responseMessage = '';
+      this.registerSuccessful = false;
+    }, 2500); // 2.5 seconds
   }
 
 }
