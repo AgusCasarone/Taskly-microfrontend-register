@@ -32,7 +32,7 @@ export class ForgotPasswordComponent {
   };
 
   placeHolder = {
-    name: 'Nombre',
+    name: 'Nombre de usuario',
     email: 'Email',
     password: 'Contraseña nueva',
     confirmPassword: 'Repite la contraseña',
@@ -54,7 +54,7 @@ export class ForgotPasswordComponent {
       || this.confirmPassword === '')
   }
 
-  register() {
+  resetPassword() {
     if (this.validateAttributes()) {
       this.missingFields = true;
       this.fillAllFields = 'Debe rellenar todos los campos';

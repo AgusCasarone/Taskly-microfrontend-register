@@ -61,9 +61,9 @@ export class UsersService {
       return currentId > maxId ? currentId : maxId;
     }, 0);
 
-    if (this.users.find(u => u.email === user.email))
+    if (this.users.find(u => u.email.toLocaleLowerCase() === user.email.toLowerCase()))
         return "Ya existe un usuario con ese correo electrónico";
-    if (this.users.find(u => u.name === user.name))
+    if (this.users.find(u => u.name.toLowerCase() === user.name.toLowerCase()))
         return "Ya existe un usuario con ese nombre";
 
     if (user.password.length < 8)
@@ -78,14 +78,20 @@ export class UsersService {
 
   logIn(email: string, password: string): User | undefined {
 
-    return this.users.find(u => u.email === email && u.password === password);
+    return this.users.find(u =>
+      u.email.toLowerCase() === email.toLocaleLowerCase() && u.password === password);
 
   }
 
   resetPassword(email: string, name: string, password: string): string {
-    const user = this.users.find(u => u.email === email && u.name === name);
+    const user = this.users.find(u =>
+      u.email.toLowerCase() === email.toLowerCase() && u.name.toLowerCase() === name.toLowerCase());
 
     if (user !== undefined) {
+      if (user.password.length < 8)
+        return "La contraseña debe tener al menos 8 caracteres";
+      if (user.password.length > 16)
+          return "La contraseña no puede tener más de 16 caracteres";
       user.password = password;
     }
 

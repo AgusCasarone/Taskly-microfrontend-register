@@ -32,7 +32,7 @@ export class RegisterFormComponent {
   };
 
   placeHolder = {
-    name: 'Nombre',
+    name: 'Nombre de usuario',
     age: 'Edad',
     email: 'Email',
     password: 'Contraseña',
