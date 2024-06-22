@@ -10,6 +10,12 @@
       name="name"
       id="name"
       placeholder="{{ placeHolder.name }}">
+
+    @if (missingFields && newUser.name === '') {
+      <small class="text-red-500">
+        Debe ingresar un nombre
+      </small>
+    }
   </div>
 
   <div  class="form-group">
@@ -23,6 +29,12 @@
       placeholder="{{ placeHolder.age }}"
       min="1"
       max="110">
+
+    @if (missingFields && !newUser.age) {
+      <small class="text-red-500">
+        Debe ingresar una edad
+      </small>
+    }
   </div>
 
   <div  class="form-group">
@@ -34,6 +46,12 @@
       name="email"
       id="email"
       placeholder="{{ placeHolder.email }}">
+
+    @if (missingFields && newUser.email === '') {
+      <small class="text-red-500">
+        Debe ingresar un email.
+      </small>
+    }
   </div>
 
   <div  class="form-group">
@@ -41,10 +59,17 @@
       {{ placeHolder.password }}
     </label>
     <input type="password"
+      (change) = 'missMatchingPassrowds($event)'
       [(ngModel)]="newUser.password"
       name="password"
       id="password"
       placeholder="{{ placeHolder.password }}">
+
+    @if (missingFields && confirmPassword === '') {
+      <small class="text-red-500">
+        Debe ingresar una contraseña.
+      </small>
+    }
   </div>
 
   <div  class="form-group">
@@ -58,9 +83,9 @@
       id="confirmPassword"
       placeholder="{{ placeHolder.confirmPassword }}">
 
-    @if (isMissMatchingPassrowds) {
+    @if (missingFields && confirmPassword === '') {
       <small class="text-red-500">
-        Las contraseñas no coinciden
+        Debe repetir la contraseña.
       </small>
     }
   </div>
@@ -72,6 +97,17 @@
     value="{{ placeHolder.submit }}"
     id="registry"
     class="btn-outline" >
+
+    @if (missingFields) {
+      <small class="text-red-500">
+        {{ fillAllFields }}
+      </small>
+    }
+    @if (errorMessage) {
+      <small class="text-red-500">
+        {{ errorMessage }}
+      </small>
+    }
   </div>
 
   <div class="mt-4 text-center">

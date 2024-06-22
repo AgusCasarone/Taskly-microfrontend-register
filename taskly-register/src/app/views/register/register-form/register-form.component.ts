@@ -18,6 +18,11 @@ export class RegisterFormComponent {
   confirmPassword: string = '';
   isMissMatchingPassrowds: boolean = false;
 
+  missingFields: boolean = false;
+  fillAllFields: string = '';
+
+  errorMessage: string = '';
+
   newUser: User = {
     name: '',
     age: NaN,
@@ -36,13 +41,57 @@ export class RegisterFormComponent {
 
 
   missMatchingPassrowds(controlPassword: Event) {
-    if (this.newUser.password !== (controlPassword.target as HTMLInputElement).value) {
-      this.isMissMatchingPassrowds = true;
-    }
+    this.isMissMatchingPassrowds =
+      this.newUser.password !== (controlPassword.target as HTMLInputElement).value
+  }
+
+  validateAttributes(): boolean {
+
+    return (this.newUser.name === ''
+      || Number.isNaN(this.newUser.age)
+      || this.newUser.email === ''
+      || this.newUser.password === ''
+      || this.newUser.password === ''
+      || this.confirmPassword === '')
   }
 
   register() {
-    this.usersService.register(this.newUser);
+    if (this.validateAttributes()) {
+      this.missingFields = true;
+      this.fillAllFields = 'Debe rellenar todos los campos';
+      return;
+    } else {
+      this.missingFields = false;
+      this.fillAllFields = '';
+    }
+
+    if (this.newUser.password !== this.confirmPassword) {
+      this.missingFields = true;
+      this.confirmPassword = '';
+      return;
+    }
+
+    console.log(JSON.stringify(this.newUser));
+
+    const response = this.usersService.register(this.newUser);
+    console.log(response);
+
+    if (response.includes('Usuario registrado:')) {
+      this.errorMessage = '';
+      this.resetForm();
+    } else {
+      this.errorMessage = response;
+    }
+  }
+
+  resetForm() {
+    this.newUser = {
+      name: '',
+      age: NaN,
+      email: '',
+      password: ''
+    }
+    this.confirmPassword = '';
   }
 
 }

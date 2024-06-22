@@ -53,25 +53,27 @@ export class UsersService {
       return currentId > maxId ? currentId : maxId;
     }, 0);
 
-    switch (user) {
-      case this.users.find(u => u.email === user.email):
+    if (this.users.find(u => u.email === user.email))
         return "Ya existe un usuario con ese correo electrónico";
-      case this.users.find(u => u.name === user.name):
+    if (this.users.find(u => u.name === user.name))
         return "Ya existe un usuario con ese nombre";
-    }
 
-    switch (user.password.length) {
-      case (< 8 > user.password.length):
+    if (user.password.length < 8)
         return "La contraseña debe tener al menos 8 caracteres";
-      case (< 16 > user.password.length):
+    if (user.password.length > 16)
         return "La contraseña no puede tener más de 16 caracteres";
-    }
 
     this.users.push(user);
 
     console.log(JSON.stringify(user));
 
     return "Usuario registrado:\n" + JSON.stringify(user);
+  }
+
+  logIn(email: string, password: string): User | undefined {
+
+    return this.users.find(u => u.email === email && u.password === password);
+
   }
 }
 
