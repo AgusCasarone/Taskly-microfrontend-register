@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user';
@@ -17,16 +17,43 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login-form.component.html',
   styles: ``
 })
-export class LoginFormComponent {
-
-  constructor(private usersService: UsersService) {}
+export class LoginFormComponent implements OnInit {
 
   user: User | undefined;
   loginAttempted: boolean = false;
   loginSuccessful: boolean = false;
+  rememberMe: boolean = false;
 
   email: string = '';
   password: string = '';
+
+  constructor(private usersService: UsersService) {}
+
+  ngOnInit(): void {
+  }
+
+  isUserRemembered() {
+    const rememberedEmail = localStorage.getItem('email');
+    const rememberedPassword = localStorage.getItem('password');
+
+    if (rememberedEmail && rememberedPassword) {
+      this.email = rememberedEmail;
+      this.password = rememberedPassword;
+      this.rememberMe = true;
+    }
+  }
+
+  rememberLogin() {
+    if (this.rememberMe) {
+      localStorage.setItem('email', this.email);
+      localStorage.setItem('password', this.password);
+      localStorage.setItem('rememberMe', 'true');
+    } else {
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+      localStorage.removeItem('rememberMe');
+    }
+  }
 
   login() {
     this.loginAttempted = true;

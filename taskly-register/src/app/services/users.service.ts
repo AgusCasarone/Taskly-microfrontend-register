@@ -81,6 +81,18 @@ export class UsersService {
     return this.users.find(u => u.email === email && u.password === password);
 
   }
+
+  resetPassword(email: string, name: string, password: string): string {
+    const user = this.users.find(u => u.email === email && u.name === name);
+
+    if (user !== undefined) {
+      user.password = password;
+    }
+
+    return user !== undefined ?
+      ("Usuario con nueva contraseña:\n" + JSON.stringify(user)) : "Revisá las credenciales";
+
+  }
 }
 
 

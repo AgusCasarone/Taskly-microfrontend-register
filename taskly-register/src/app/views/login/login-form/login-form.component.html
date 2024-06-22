@@ -23,6 +23,17 @@
       autocomplete="new-password"
     >
   </div>
+
+  <div class="form-checkbox">
+    <input type="checkbox"
+    [(ngModel)]="rememberMe"
+    (click)="rememberLogin()"
+    name="rememberMe"
+    id="rememberMe">
+    <label for="rememberMe">Recordarme</label>
+
+  </div>
+
   <div class="form-group">
     <input
     type="submit"
@@ -48,12 +59,22 @@
     }
 
   </div>
+
   <div class="mt-4 text-center">
 
     <p class="mt-4">¿No tenés usuario?
       <a class="cursor-pointer text-taskly-vermilion-500 hover:text-taskly-vermilion-800"
       routerLink="/register">
       Crealo acá</a>.
+    </p>
+  </div>
+
+  <div class=" text-center">
+
+    <p>¿Olvidaste tu contraseña?
+      <a class="cursor-pointer text-taskly-vermilion-500 hover:text-taskly-vermilion-800"
+      routerLink="/forgot-password">
+      Recuperala acá</a>.
     </p>
   </div>
 </form>
