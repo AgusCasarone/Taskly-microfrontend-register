@@ -131,6 +131,10 @@
     .card-container h3{ @apply text-taskly-vermilion-600}
     .card-task h5{ @apply underline decoration-taskly-vermilion-600}
 
+    .error {@apply text-red-500 text-sm}
+    .info {@apply text-sm}
+    .success {@apply text-green-500 text-sm}
+
     button, input[type="submit"] {@apply inline-block text-center px-6 rounded-lg cursor-pointer w-full min-h-9 min-w-9 text-center disabled:cursor-not-allowed}
     .btn-outline {@apply border border-solid border-taskly-vermilion-600 text-taskly-vermilion-600 hover:border-taskly-vermilion-700 hover:text-taskly-vermilion-700 transition ease-linear active:border-taskly-vermilion-800 active:text-taskly-vermilion-800
     disabled:border-taskly-vermilion-900 disabled:text-taskly-vermilion-900}

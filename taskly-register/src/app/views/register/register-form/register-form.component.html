@@ -107,14 +107,14 @@
         {{ fillAllFields }}
       </small>
     }
-    @else if (errorMessage) {
+    @else if (responseMessage) {
       <small class="error">
-        {{ errorMessage }}
+        {{ responseMessage }}
       </small>
     }
     @else {
       <small class="success">
-        {{ errorMessage }}
+        {{ responseMessage }}
       </small>
     }
   </div>

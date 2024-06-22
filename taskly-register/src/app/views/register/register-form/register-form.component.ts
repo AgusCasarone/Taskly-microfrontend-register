@@ -21,9 +21,7 @@ export class RegisterFormComponent {
   missingFields: boolean = false;
   fillAllFields: string = '';
 
-  errorMessage: string = '';
-
-
+  responseMessage: string = '';
 
   newUser: User = {
     name: '',
@@ -73,16 +71,13 @@ export class RegisterFormComponent {
       return;
     }
 
-    console.log(JSON.stringify(this.newUser));
-
     const response = this.usersService.register(this.newUser);
-    console.log(response);
 
     if (response.includes('Usuario registrado:')) {
-      this.errorMessage = '¡Te registraste con éxito!';
+      this.responseMessage = '¡Te registraste con éxito!';
       this.resetForm();
     } else {
-      this.errorMessage = response;
+      this.responseMessage = response;
     }
   }
 

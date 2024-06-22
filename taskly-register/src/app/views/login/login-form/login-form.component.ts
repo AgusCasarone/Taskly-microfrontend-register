@@ -29,23 +29,11 @@ export class LoginFormComponent {
   password: string = '';
 
   login() {
-    console.log("email" + this.email + "password" + this.password);
     this.loginAttempted = true;
     this.user = this.usersService.logIn(this.email, this.password);
-    console.log(this.user);
 
-    if (this.user) {
-      this.loginSuccessful = true;
-    }
+    this.user ?
+      this.loginSuccessful = true : this.loginSuccessful = false;
   }
-
-  keyPress($event: KeyboardEvent) {
-    console.log($event.key);
-    console.log(this.email);
-    }
-
-    clog() {
-      console.log("hola")
-    }
 
 }
