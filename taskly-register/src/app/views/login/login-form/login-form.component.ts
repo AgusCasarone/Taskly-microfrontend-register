@@ -21,11 +21,31 @@ export class LoginFormComponent {
 
   constructor(private usersService: UsersService) {}
 
+  user: User | undefined;
+  loginAttempted: boolean = false;
+  loginSuccessful: boolean = false;
+
   email: string = '';
   password: string = '';
 
-login() {
-  console.log(this.usersService.logIn(this.email, this.password));
-}
+  login() {
+    console.log("email" + this.email + "password" + this.password);
+    this.loginAttempted = true;
+    this.user = this.usersService.logIn(this.email, this.password);
+    console.log(this.user);
+
+    if (this.user) {
+      this.loginSuccessful = true;
+    }
+  }
+
+  keyPress($event: KeyboardEvent) {
+    console.log($event.key);
+    console.log(this.email);
+    }
+
+    clog() {
+      console.log("hola")
+    }
 
 }

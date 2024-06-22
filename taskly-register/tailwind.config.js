@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./node_modules/tw-elements/js/**/*.js"
   ],
   theme: {
     extend: {
@@ -61,5 +62,5 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [require("tw-elements/plugin.cjs")],
 }

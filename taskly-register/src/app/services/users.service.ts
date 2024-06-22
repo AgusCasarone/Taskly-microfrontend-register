@@ -41,7 +41,15 @@ export class UsersService {
       email: 'ethan.hunt@example.com',
       password: 'imfagent007',
       age: 40
-    }
+    },
+    {
+      _id: 6,
+      name: 'Agus',
+      email: 'agus.casarone@gmail.com',
+      password: 'micontraseña',
+      age: 40
+    },
+
   ];
 
   constructor() { }
@@ -71,6 +79,10 @@ export class UsersService {
   }
 
   logIn(email: string, password: string): User | undefined {
+
+    this.users.find(u => u.email === email && u.password === password) ? console.log("Login exitoso") : console.log("Login fallido");
+    this.users.find(u => u.email === email) ? console.log("existe mail") : console.log("no existe mail");
+    this.users.find(u => u.password === password) ? console.log("existe password") : console.log("no existe password");
 
     return this.users.find(u => u.email === email && u.password === password);
 

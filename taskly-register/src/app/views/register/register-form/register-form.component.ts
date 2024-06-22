@@ -23,6 +23,8 @@ export class RegisterFormComponent {
 
   errorMessage: string = '';
 
+
+
   newUser: User = {
     name: '',
     age: NaN,
@@ -77,7 +79,7 @@ export class RegisterFormComponent {
     console.log(response);
 
     if (response.includes('Usuario registrado:')) {
-      this.errorMessage = '';
+      this.errorMessage = '¡Te registraste con éxito!';
       this.resetForm();
     } else {
       this.errorMessage = response;

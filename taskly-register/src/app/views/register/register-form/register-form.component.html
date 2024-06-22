@@ -9,7 +9,8 @@
       [(ngModel)]="newUser.name"
       name="name"
       id="name"
-      placeholder="{{ placeHolder.name }}">
+      placeholder="{{ placeHolder.name }}"
+      autocomplete="name">
 
     @if (missingFields && newUser.name === '') {
       <small class="text-red-500">
@@ -28,7 +29,8 @@
       id="age"
       placeholder="{{ placeHolder.age }}"
       min="1"
-      max="110">
+      max="110"
+      autocomplete="age">
 
     @if (missingFields && !newUser.age) {
       <small class="text-red-500">
@@ -45,7 +47,8 @@
       [(ngModel)]="newUser.email"
       name="email"
       id="email"
-      placeholder="{{ placeHolder.email }}">
+      placeholder="{{ placeHolder.email }}"
+      autocomplete="email">
 
     @if (missingFields && newUser.email === '') {
       <small class="text-red-500">
@@ -63,7 +66,8 @@
       [(ngModel)]="newUser.password"
       name="password"
       id="password"
-      placeholder="{{ placeHolder.password }}">
+      placeholder="{{ placeHolder.password }}"
+      autocomplete="password">
 
     @if (missingFields && confirmPassword === '') {
       <small class="text-red-500">
@@ -99,12 +103,17 @@
     class="btn-outline" >
 
     @if (missingFields) {
-      <small class="text-red-500">
+      <small class="error">
         {{ fillAllFields }}
       </small>
     }
-    @if (errorMessage) {
-      <small class="text-red-500">
+    @else if (errorMessage) {
+      <small class="error">
+        {{ errorMessage }}
+      </small>
+    }
+    @else {
+      <small class="success">
         {{ errorMessage }}
       </small>
     }
