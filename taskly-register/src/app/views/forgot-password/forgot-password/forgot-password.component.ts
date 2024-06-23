@@ -3,13 +3,14 @@ import { User } from '../../../interfaces/user';
 import { UsersService } from '../../../services/users.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PasswordInputComponent } from "../../../utils/inputs/password-input/password-input.component";
 
 @Component({
-  selector: 'forgot-password',
-  standalone: true,
-  imports: [FormsModule, RouterLink],
-  templateUrl: './forgot-password.component.html',
-  styleUrl: './forgot-password.component.scss'
+    selector: 'forgot-password',
+    standalone: true,
+    templateUrl: './forgot-password.component.html',
+    styleUrl: './forgot-password.component.scss',
+    imports: [FormsModule, RouterLink, PasswordInputComponent]
 })
 export class ForgotPasswordComponent {
 

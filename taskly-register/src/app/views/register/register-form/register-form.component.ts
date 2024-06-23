@@ -3,13 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user';
 import { RouterLink } from '@angular/router';
+import { PasswordInputComponent } from "../../../utils/inputs/password-input/password-input.component";
 
 @Component({
-  selector: 'register-form',
-  standalone: true,
-  imports: [FormsModule, RouterLink],
-  templateUrl: './register-form.component.html',
-  styleUrl: './register-form.component.scss'
+    selector: 'register-form',
+    standalone: true,
+    templateUrl: './register-form.component.html',
+    styleUrl: './register-form.component.scss',
+    imports: [FormsModule, RouterLink, PasswordInputComponent]
 })
 export class RegisterFormComponent {
 

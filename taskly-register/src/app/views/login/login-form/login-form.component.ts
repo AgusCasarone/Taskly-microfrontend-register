@@ -4,18 +4,20 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user';
 import { FormsModule } from '@angular/forms';
+import { PasswordInputComponent } from "../../../utils/inputs/password-input/password-input.component";
 
 @Component({
-  selector: 'login',
-  standalone: true,
-  imports: [
-    FormsModule,
-    RouterLink,
-    RouterModule,
-    CommonModule
-  ],
-  templateUrl: './login-form.component.html',
-  styles: ``
+    selector: 'login',
+    standalone: true,
+    templateUrl: './login-form.component.html',
+    styles: ``,
+    imports: [
+        FormsModule,
+        RouterLink,
+        RouterModule,
+        CommonModule,
+        PasswordInputComponent
+    ]
 })
 export class LoginFormComponent implements OnInit {
 

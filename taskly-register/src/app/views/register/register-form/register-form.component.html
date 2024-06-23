@@ -58,16 +58,16 @@
   </div>
 
   <div  class="form-group">
-    <label for="password">
-      {{ placeHolder.password }}
-    </label>
-    <input type="password"
+
+    <taskly-password-input
+      [label]="placeHolder.password"
+      [value]="newUser.password"
+      [id]="'password'"
+      (valueChange)="newUser.password = $event"
+      [placeholder]="placeHolder.password"
       (change) = 'missMatchingPassrowds($event)'
-      [(ngModel)]="newUser.password"
-      name="password"
-      id="password"
-      placeholder="{{ placeHolder.password }}"
-      autocomplete="password">
+      [autocomplete]="'password'"
+    ></taskly-password-input>
 
     @if (missingFields && confirmPassword === '') {
       <small class="text-red-500">
@@ -77,15 +77,13 @@
   </div>
 
   <div  class="form-group">
-    <label for="confirmPassword">
-      {{ placeHolder.confirmPassword }}
-    </label>
-    <input type="password"
+    <taskly-password-input
+      [label]="placeHolder.confirmPassword"
+      [value]="confirmPassword"
+      (valueChange)="confirmPassword = $event"
+      [placeholder]="placeHolder.confirmPassword"
       (change) = 'missMatchingPassrowds($event)'
-      [(ngModel)]="confirmPassword"
-      name="confirmPassword"
-      id="confirmPassword"
-      placeholder="{{ placeHolder.confirmPassword }}">
+    ></taskly-password-input>
 
     @if (missingFields && confirmPassword === '') {
       <small class="text-red-500">
