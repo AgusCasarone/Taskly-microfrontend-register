@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { UsersService } from '../../../services/users.service';
 import { User } from '../../../interfaces/user';
+import { UsersService } from '../../../services/users.service';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { PasswordInputComponent } from "../../../utils/inputs/password-input/password-input.component";
 
 @Component({
-    selector: 'register-form',
+    selector: 'forgot-password',
     standalone: true,
-    templateUrl: './register-form.component.html',
-    styleUrl: './register-form.component.scss',
+    templateUrl: './forgot-password.component.html',
+    styleUrl: './forgot-password.component.scss',
     imports: [FormsModule, RouterLink, PasswordInputComponent]
 })
-export class RegisterFormComponent {
+export class ForgotPasswordComponent {
 
   constructor(private usersService: UsersService) {}
 
@@ -25,7 +25,7 @@ export class RegisterFormComponent {
   responseMessage: string = '';
   registerSuccessful: boolean = false;
 
-  newUser: User = {
+  user: User = {
     name: '',
     age: NaN,
     email: '',
@@ -34,30 +34,28 @@ export class RegisterFormComponent {
 
   placeHolder = {
     name: 'Nombre de usuario',
-    age: 'Edad',
     email: 'Email',
-    password: 'Contraseña',
+    password: 'Contraseña nueva',
     confirmPassword: 'Repite la contraseña',
-    submit: 'Registrarme!'
+    submit: 'Recuperar contraseña'
   };
 
 
   missMatchingPassrowds(controlPassword: Event) {
     this.isMissMatchingPassrowds =
-      this.newUser.password !== (controlPassword.target as HTMLInputElement).value
+      this.user.password !== (controlPassword.target as HTMLInputElement).value
   }
 
   validateAttributes(): boolean {
 
-    return (this.newUser.name === ''
-      || Number.isNaN(this.newUser.age)
-      || this.newUser.email === ''
-      || this.newUser.password === ''
-      || this.newUser.password === ''
+    return (this.user.name === ''
+      || this.user.email === ''
+      || this.user.password === ''
+      || this.user.password === ''
       || this.confirmPassword === '')
   }
 
-  register() {
+  resetPassword() {
     if (this.validateAttributes()) {
       this.missingFields = true;
       this.fillAllFields = 'Debe rellenar todos los campos';
@@ -67,16 +65,16 @@ export class RegisterFormComponent {
       this.fillAllFields = '';
     }
 
-    if (this.newUser.password !== this.confirmPassword) {
+    if (this.user.password !== this.confirmPassword) {
       this.missingFields = true;
       this.confirmPassword = '';
       return;
     }
 
-    const response = this.usersService.register(this.newUser);
+    const response = this.usersService.resetPassword(this.user.email, this.user.name, this.user.password);
 
-    if (response.includes('Usuario registrado:')) {
-      this.responseMessage = '¡Te registraste con éxito!';
+    if (response.includes('Usuario')) {
+      this.responseMessage = '¡Recuperaste tu contraseña';
       this.registerSuccessful = true;
       this.resetForm();
       this.resetStatusAfterDelay();
@@ -86,7 +84,7 @@ export class RegisterFormComponent {
   }
 
   resetForm() {
-    this.newUser = {
+    this.user = {
       name: '',
       age: NaN,
       email: '',

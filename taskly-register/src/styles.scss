@@ -131,6 +131,10 @@
     .card-container h3{ @apply text-taskly-vermilion-600}
     .card-task h5{ @apply underline decoration-taskly-vermilion-600}
 
+    .error {@apply text-red-500 text-sm}
+    .info {@apply text-sm}
+    .success {@apply text-green-500 text-sm}
+
     button, input[type="submit"] {@apply inline-block text-center px-6 rounded-lg cursor-pointer w-full min-h-9 min-w-9 text-center disabled:cursor-not-allowed}
     .btn-outline {@apply border border-solid border-taskly-vermilion-600 text-taskly-vermilion-600 hover:border-taskly-vermilion-700 hover:text-taskly-vermilion-700 transition ease-linear active:border-taskly-vermilion-800 active:text-taskly-vermilion-800
     disabled:border-taskly-vermilion-900 disabled:text-taskly-vermilion-900}
@@ -142,8 +146,14 @@
     label{
         @apply text-sm text-taskly-vermilion-600 ;
       }
-    input[type="text"], input[type="email"], input[type="password"], input[type="number"]  {
+    input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="checkbox"]  {
       @apply bg-taskly-woodsmoke-700 rounded-sm p-1 text-white focus-visible:border focus-visible:border-taskly-vermilion-600  focus:border focus:border-taskly-vermilion-600  focus:bg-taskly-woodsmoke-500  disabled:bg-taskly-woodsmoke-900 disabled:text-taskly-woodsmoke-400 disabled:cursor-not-allowed   ;
+    }
+
+    .form-checkbox {
+      @aply flex flex-row gap-1 w-full  ml-[1.75rem];
+      label {@aply inline-block ps-[0.15rem] hover:cursor-pointer}
+      input[type="checkbox"] {@apply  ml-[1.75rem] relative float-left -ms-[1.5rem] me-[6px] mt-[0.15rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-taskly-woodsmoke-500 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] checked:border-taskly-vermilion checked:bg-taskly-vermilion checked:before:opacity-[0.16] checked:after:absolute checked:after:-mt-px checked:after:ms-[0.25rem] checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-l-0 checked:after:border-t-0 checked:after:border-solid checked:after:border-taskly-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-taskly-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[0.5] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:-mt-px checked:focus:after:ms-[0.25rem] checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-l-0 checked:focus:after:border-t-0 checked:focus:after:border-solid checked:focus:after:border-taskly-white checked:focus:after:bg-transparent rtl:float-right  ml-[0.4375rem]}
     }
 
 
